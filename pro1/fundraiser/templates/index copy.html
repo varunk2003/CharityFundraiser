@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>Charity Fundraising Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<style>
+    /* styles.css */
+
+/* Reset some default styles */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.self{
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav li {
+    margin-right: 1rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.hero {
+    background-image: url('hero-image.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 5rem 0;
+    color: #fff;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #ff6600;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.about-content {
+    padding: 4rem;
+}
+
+.causes {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 4rem;
+}
+
+.cause {
+    width: 30%;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.donate {
+    padding: 4rem;
+    text-align: center;
+}
+
+.contact {
+    padding: 4rem;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+}
+.about-content {
+    padding: 4rem;
+    background-color: #f9f9f9;
+}
+
+.about-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.about-content p {
+    margin-bottom: 1.5rem;
+}
+.causes {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 4rem;
+}
+
+.cause {
+    width: calc(33.33% - 2rem); /* Adjust width as needed */
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cause img {
+    max-width: 100%;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.cause h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.cause p {
+    margin-bottom: 1rem;
+}
+
+.cause .cta-button {
+    background-color: #ff6600;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.cause .cta-button:hover {
+    background-color: #e65c00;
+}
+.donate {
+    padding: 4rem;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.donate h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.donate p {
+    margin-bottom: 1.5rem;
+}
+
+#donation-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#donation-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+#donation-form select,
+#donation-form input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#donation-form button {
+    background-color: #ff6600;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#donation-form button:hover {
+    background-color: #e65c00;
+}
+
+.contact {
+    padding: 4rem;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.contact h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.contact p {
+    margin-bottom: 1.5rem;
+}
+
+#contact-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+#contact-form input,
+#contact-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#contact-form textarea {
+    resize: vertical;
+}
+
+#contact-form button {
+    background-color: #ff6600;
+    color: #db4f4f;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#contact-form button:hover {
+    background-color: #e65c00;
+}
+.hero {
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 10rem 0;
+    color: #b45a5a;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.hero .cta-button {
+    background-color: #ff6600;
+    color: #fff;
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.hero .cta-button:hover {
+    background-color: #e65c00;
+}
+
+header {
+    background-color: rgb(26, 27, 26);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+}
+
+.header {
+    margin-left: 50px;
+    position: relative;
+    top:.5em
+}
+
+.header a {
+    text-decoration: none;
+    color: rgb(88, 229, 88);
+    margin-right: 15px;
+}
+.header a:hover {
+    color: white;
+}
+
+.phone i
+{
+    color: white;
+    margin-top:.6em;
+    margin-left: 2em;
+}
+.ul
+{
+    margin-left:auto;
+    position: relative;
+    top:.5em;
+    text-decoration: none;
+    overflow: hidden;
+}
+ul
+{
+    display:inline-block;
+    text-decoration: none;
+    color: white;
+    margin-bottom:-2em;  
+}
+.login
+{
+    color: white;
+    margin-right: 20px;
+    text-decoration: none;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+
+}
+.login:last-child
+{
+    margin-right:1em;
+}
+
+
+
+</style>
+<body>
+    <header>
+        <div class="header">
+            <a href="#"><p class="fa fa-facebook"></p></a>
+            <a href="#"><p class="fa fa-twitter"></p></a>
+            <a href="#"><p class="fa fa-linkedin"></p></a>
+            <a href="#"><p class="fa fa-instagram"></p></a>
+        </div>
+        <div class="phone">
+            <i class="fa fa-phone"> +91-9952785386</i>
+        </div>
+        <div class="ul">
+            {% if data.signins %}
+        <ul>
+            <li class="fa fa-user">&nbsp;&nbsp;<a href="" class="login" style="text-decoration: none;font-family:'rubik';">{{data.username}}</a></li>
+        </ul>
+        <ul>
+            <li class="fa fa-sign-in">&nbsp;&nbsp;<a href="logout/" class="login">Log out</a></li>
+        </ul>
+        {% else %}
+        <ul>
+            <li class="fa fa-sign-in">&nbsp;&nbsp;<a href="login/" class="login"> Login</a></li>
+        </ul>
+        {% endif %}
+        </div>
+
+        </header>
+    </body>
+    <div class="self">
+        <h1>CHARITY FUNDRAISER</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#causes">Causes</a></li>
+                <li><a href="#donate">Donate</a></li>
+                <li><a href="#contact">Contact</a></li>
+
+            </ul>
+        </nav>
+    </div>
+
+    <section id="home">
+        <div class="hero">
+            <img src="{% static 'event-1.jpg' %}" alt="Cause 1">
+            <h2>Supporting Causes That Matter</h2>
+            <p>Your donation can make a difference in the lives of those in need.</p>
+            <a href="#donate" class="cta-button">Donate Now</a>
+        </div>
+    </section>
+
+    <<section id="about">
+        <div class="about-content">
+            <h2>About Us</h2>
+            <p>We are a dedicated team working to make the world a better place through charitable contributions.</p>
+            <p>Our mission is to support various causes and provide assistance to those in need. With the help of generous donors like you, we can make a positive impact on society.</p>
+            <p>Join us in our journey to create a better future for everyone.</p>
+        </div>
+    </section>
+    
+
+    <section id="causes">
+        <div class="causes">
+            <h2>CAUSES WE SUPPORT</h2>
+            <div class="cause">
+                <img src="{% static 'causes-1.jpg' %}" alt="Cause 1">
+                <h3>POVERTY</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <a href="#donate" class="cta-button">Donate</a>
+            </div>
+            <div class="cause">
+                <img src="{% static 'causes-2.jpg' %}" alt="Cause 2">
+                <h3>WIDE SPREAD FEVERS</h3>
+                <p>Nulla vitae elit libero, a pharetra augue.</p>
+                <a href="#donate" class="cta-button">Donate</a>
+            </div>
+            <!-- Add more cause blocks as needed -->
+        </div>
+    </section>
+
+    <section id="donate">
+        <div class="donate">
+            <h2>Make a Donation</h2>
+            <p>Your contribution can create a positive impact. Choose a cause and donate today.</p>
+            <form id="donation-form">
+                {% csrf_token %}    
+                <label for="cause">Select a Cause:</label>
+                <select id="cause" name="cause">
+                    <option value="cause1">Cause Title 1</option>
+                    <option value="cause2">Cause Title 2</option>
+                    <!-- Add more cause options as needed -->
+                </select>
+                
+                <label for="amount">Donation Amount:</label>
+                <input type="number" id="amount" name="amount" min="1" step="1" required>
+                
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <button type="submit" class="cta-button">Donate Now</button>
+            </form>
+            <div id="confirmation-message" style="display: none;">
+                Thank you for your donation! Your contribution is greatly appreciated.
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="contact">
+        <div class="contact">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or inquiries, feel free to reach out to us.</p>
+            <form id="contact-form">
+                {% csrf_token %}
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Your Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+    <!-- <script>
+        
+        document.addEventListener('DOMContentLoaded', function() {
+        const donationForm = document.getElementById('donation-form');
+        const confirmationMessage = document.getElementById('confirmation-message');
+
+        donationForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Simulate form submission and display confirmation message
+            // You can replace this with your actual form submission logic
+            // For now, we're just showing the confirmation message after a brief delay
+            setTimeout(function() {
+                donationForm.style.display = 'none'; // Hide the form
+                confirmationMessage.style.display = 'block'; // Show the confirmation message
+            }, 1000); // Wait for 1 second before showing the confirmation
+        });
+    }); -->
+
+    </script>
+
+    <footer>
+        <p>&copy; 2023 Charity Fundraising Platform. All rights reserved.</p>
+    </footer>
+</body>
+</html>
